@@ -5,9 +5,9 @@ CREATE TABLE tasks (
     user_id INT NOT NULL REFERENCES users(user_id),
     cat_id INT NOT NULL REFERENCES categories(category_id),
     priority INT DEFAULT 0 CHECK (priority BETWEEN 0 AND 5),
-    title VARCHAR(255),
+    title NOT NULL VARCHAR(255),
     time_due TIMESTAMP,
     is_completed BOOLEAN DEFAULT FALSE,
-    start_date TIMESTAMP,
-    end_date TIMESTAMP
+    created_date TIMESTAMP,
+    completed_date TIMESTAMP
 );
