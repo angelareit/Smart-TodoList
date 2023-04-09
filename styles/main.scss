@@ -1,18 +1,32 @@
+@use 'theme';
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  @extend %white-background;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+  main {
+    @include theme.horizontal-symmetrical-margin($value: 35px);
+
+
+    #add-entry {
+      display: flex;
+      flex-direction: row;
+
+      input[type=text] {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 5px solid theme.$secondaryCol;
+        width: 100%;
+      }
+      button[type=submit] {
+        border: none;
+        background-color: transparent;
+        @include theme.horizontal-symmetrical-margin($value: 10px);
+      }
+    }
+
+
+  }
 }

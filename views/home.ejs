@@ -10,15 +10,32 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Roboto:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <h1>THIS IS HOME PAGE</h1>
+  <%- include('partials/_header') %>
+  <main>
+    <h1>THIS IS HOME PAGE</h1>
+
+    <formi id="add-entry"">
+      <input type="text" id="task" name="task"><br>
+      <button type="submit"><i class="fa-solid fa-plus"></i></button>
+
+    </form>
+
+  </main>
+
 </body>
 
 </html>
