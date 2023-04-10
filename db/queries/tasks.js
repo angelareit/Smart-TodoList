@@ -15,6 +15,8 @@ const getTasks = () => {
 const getTaskByTitle = () => {
   return db.query('SELECT title FROM tasks;')
     .then(data => {
+      console.log('data:', data.rows)
+
       return data.rows;
     })
     .catch((err) => {
