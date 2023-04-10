@@ -10,6 +10,7 @@ const data = [
 
 
 const renderTasks = function(tasks) {
+  console.log('logging tasks', tasks);
   // loops through tweets
 
   tasks.forEach(task => {

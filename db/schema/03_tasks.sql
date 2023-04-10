@@ -8,6 +8,6 @@ CREATE TABLE tasks (
     title VARCHAR(255) NOT NULL,
     task_due TIMESTAMP,
     is_completed BOOLEAN DEFAULT FALSE,
-    created_date TIMESTAMP,
-    completed_date TIMESTAMP
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed_date TIMESTAMP DEFAULT NULL
 );
