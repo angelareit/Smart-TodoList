@@ -40,9 +40,11 @@ const categoriesRoutes = require('./routes/categories');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
+app.use('/users', usersRoutes);
+
+
 app.use('/home', homeRoutes);
 app.use('/categories', categoriesRoutes);
-app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -51,6 +53,9 @@ app.use('/users', usersRoutes);
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+app.post('/', (req, res) => {
+  res.render('home');
 });
 
 app.listen(PORT, () => {

@@ -3,8 +3,10 @@ $font-family-regular: 'Roboto', sans-serif;
 
 $side-symmetrical-margin: 0px 50px 0px 50px;
 
-$primaryCol:#574F2A;
+$primaryCol: #DE1A1A;
+$primaryCol1:#574F2A;
 $secondaryCol: #D78521;
+$fontBlack: #011627;
 
 @mixin horizontal-symmetrical-margin($value: 10px) {
   margin-left: $value ;
@@ -24,10 +26,12 @@ $secondaryCol: #D78521;
 }
 
 %white-background {
-  background-color: #ffffff;
-  background-image: url("https://www.transparenttextures.com/patterns/billie-holiday.png");
+  background-color: #f4f1f1;
+/*   background-image: url("https://www.transparenttextures.com/patterns/billie-holiday.png");
+ */
 }
 %profile-background {
   background-color: #de5752;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+/*   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+ */
 }

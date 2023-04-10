@@ -3,10 +3,13 @@
 body {
   display: flex;
   flex-direction: column;
+  color: theme.$fontBlack;
   @extend %white-background;
 
   main {
     @include theme.horizontal-symmetrical-margin($value: 35px);
+    display: flex;
+    flex-direction: column;
 
 
     #add-entry {
@@ -20,13 +23,38 @@ body {
         border-bottom: 5px solid theme.$secondaryCol;
         width: 100%;
       }
+
       button[type=submit] {
         border: none;
         background-color: transparent;
         @include theme.horizontal-symmetrical-margin($value: 10px);
       }
     }
+  }
 
+  main.landing {
+    align-items: center;
+    flex-direction: row;
+
+    img {
+      max-width: 400px;
+      margin: 20px;
+      border-radius: 20px;
+    }
+    section.login-prompt {
+      margin: 20px;
+      button.login{
+        border: none;
+        background-color: theme.$secondaryCol;
+        color: white;
+        padding: 5px;
+        border-radius: 20px;
+        span
+        {
+          @include theme.horizontal-symmetrical-margin($value: 10px);
+        }
+      }
+    }
 
   }
 }
