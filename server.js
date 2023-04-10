@@ -33,6 +33,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home');
 const categoriesRoutes = require('./routes/categories');
+const tasksApiRoutes = require('./routes/tasks');
 
 
 // Mount all resource routes
@@ -41,6 +42,8 @@ const categoriesRoutes = require('./routes/categories');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+app.use('/api/tasks', tasksApiRoutes);
+app.use('/api/tasks/title', tasksApiRoutes);
 
 
 app.use('/home', homeRoutes);
