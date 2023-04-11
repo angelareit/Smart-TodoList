@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
   res.render("home");
 });
 //rename to /new-task
-router.post("/new", (req, res) => {
+router.post("/new-task", (req, res) => {
   console.log('home new post:', req.body);
  /* if (!req.body.category) {
      internal tool for categorizing.then(() => {

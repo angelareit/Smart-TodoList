@@ -11,7 +11,7 @@ const pool = new Pool({
 // Add new task to database
 const addTasks = function (reqBody) {
   //check if the category id is given else call categorize
-  const cat_id = reqBody.cat_id;
+  let cat_id = reqBody.cat_id;
   if (!cat_id) {
     // categorize the task if cat_id is not provided
     cat_id = categorizeTasks(reqBody.title);
