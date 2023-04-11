@@ -15,9 +15,9 @@ const addTasks = function (req) {
   	VALUES ($1, $2, $3, $4, $5)
   	RETURNING *;`;
   const values = [
-    req.user_id,
-    req.cat_id,
-    req.priority,
+    '1' /*  req.user_id */,
+    '1'  /* req.cat_id, */,
+    '1' /* req.priority */,
     req.title,
     req.task_due,
   ];

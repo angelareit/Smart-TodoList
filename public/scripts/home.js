@@ -1,15 +1,21 @@
 $(document).ready(function() {
   loadTasks();
   console.log('YELLOW CHEESE –');
+
+  $("#cat-1").click(function(event) {
+    event.preventDefault();
+    window.location.replace ('http://localhost:8080/categories/1');
+    /* $.get('/categories/1', function(data, status) {
+      console.log('HOME', data, typeof data);
+      renderTasks(data.tasks, '#cat-1');
+    }) */
+
+  });
+
 });
 
-const data = [
-  { id: 1 ,text: 'Hello There' },
-  { id: 2, text: 'Hello Ang' },
-];
 
-
-const renderTasks = function(tasks) {
+const renderTasks = function(tasks, containerID) {
   console.log('logging tasks', tasks);
   // loops through tweets
 
@@ -17,22 +23,37 @@ const renderTasks = function(tasks) {
     console.log(task);
     // calls createTweetElement for each tweet
     const element = createTaskElement(task);
-     $('#cat-1').prepend(element);
+    let container =  $(containerID).find('ul');
+    container.prepend(element);
   });
 }
 
 function createTaskElement(data) {
-  console.log('ELEMENT', data.title);
+  //console.log('ELEMENT', data.title);
   const element =
     `<li> ${data.title} </li>`;
   return element;
 }
 
 const loadTasks = function() {
-  //pull data from server and display them with the format
-  $.get('/API/tasks/title', function(data, status){
-    console.log('HOME', data, typeof data);
-    renderTasks(data.tasks);
+  $.get('/api/tasks/byCat/1', function(data, status) {
+    //console.log('HOME', data, typeof data);
+      renderTasks(data.tasks, '#cat-1');
+  })
+
+  $.get('/api/tasks/byCat/2', function(data, status) {
+   //console.log('HOME', data, typeof data);
+    renderTasks(data.tasks, '#cat-2');
+  })
+
+  $.get('/api/tasks/byCat/3', function(data, status) {
+    //console.log('HOME', data, typeof data);
+    renderTasks(data.tasks, '#cat-3');
+  })
+
+  $.get('/api/tasks/byCat/4', function(data, status) {
+   // console.log('HOME', data, typeof data);
+    renderTasks(data.tasks, '#cat-4');
   })
 }
 
