@@ -22,9 +22,21 @@ router.post("/", (req, res) => {
   console.log("HELLO HOME!");
   res.render("home");
 });
-
+//rename to /new-task
 router.post("/new", (req, res) => {
   console.log('home new post:', req.body);
+ /* if (!req.body.category) {
+     internal tool for categorizing.then(() => {
+       if (internal tool return nothing) {
+        call external tool.then (() => {
+          if externaltool returns nothing then put in  miscellaneous category
+        })
+      }
+     })
+    }
+*/
+
+
   addTasks(req.body);
   res.redirect(`/home`);
   // res.send("Hello World");

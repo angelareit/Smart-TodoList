@@ -4,11 +4,10 @@ $(document).ready(function() {
 
   $("#cat-1").click(function(event) {
     event.preventDefault();
-    window.location.replace ('http://localhost:8080/categories/1');
-    /* $.get('/categories/1', function(data, status) {
-      console.log('HOME', data, typeof data);
-      renderTasks(data.tasks, '#cat-1');
-    }) */
+   // window.location.replace ('http://localhost:8080/categories/1');
+     $.get('/categories/1', function(data, status) {
+      console.log('CAT HOME', data, typeof data);
+    });
 
   });
 

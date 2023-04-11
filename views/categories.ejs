@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Category Page</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -11,10 +11,13 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-    <script defer src="/scripts/header.js"></script>
+  <link rel="stylesheet" href="/styles/categories.css" type="text/css"  />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <script defer src="/scripts/categories.js"></script>
+  <script defer src="/scripts/header.js"></script>
+
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Roboto:ital,wght@0,100;0,400;0,500;1,400;1,500&display=swap');
@@ -27,7 +30,23 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h1>Categories</h1>
+  <main>
+  <h1>Category name</h1>
+  <section class="category-container">
+    <article class="category">
+      <div class="task-block">
+        <div class="title">
+          <i class="complete-box fa-regular fa-square fa-xl"></i>
+          <h2>Papaya</h2>
+        </div>
+        <div class="task-actions">
+        <i class="edit action icon fa-solid fa-pen"></i>
+        <i class="delete action icon fa-solid fa-trash-can"></i>
+        </div>
+      </div>
+    </article>
+  </section>
+  </main>
 </body>
 
 </html>
