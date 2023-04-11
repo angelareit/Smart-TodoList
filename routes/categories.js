@@ -17,6 +17,10 @@ router.post("/:task_id", (req, res) => {
 });
 
 //Deleting the task
+router.post("/:task_id", (req, res) => {
+  //const newtask = editTask(req.body);
+  res.send("categories");
+});
 
 //Editing the Task
 
