@@ -30,6 +30,30 @@ body {
         @include theme.horizontal-symmetrical-margin($value: 10px);
       }
     }
+    .category-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      article.category {
+        display: flex;
+        flex-direction: column;
+
+        background-color: rgb(255, 255, 255);
+        min-width: 300px;
+        min-height: 200px;
+        margin: 5px;
+        border-radius: 20px;
+
+        h2{
+          @include theme.vertical-symmetrical-margin($value: 5px);
+          @include theme.horizontal-symmetrical-margin($value: 10px);
+          font-family: theme.$font-family-regular;
+          align-self: center;
+        }
+      }
+    }
+
   }
 
   main.landing {
