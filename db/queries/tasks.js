@@ -24,12 +24,11 @@ const getTasksByTitle = () => {
 };
 
 const getAllTasksSortedByCategory = () => {
-  return db.query( `SELECT cat_id, category_name as catName, array_agg(title)
+  return db.query( `SELECT cat_id as catID, category_name as catName, array_agg(title) as taskTitles
   FROM tasks JOIN categories ON  cat_id = categories.category_id GROUP BY cat_id, catName;
   `)
   .then(data => {
-    console.log('data:', data.rows)
-
+    console.log('sorted by category data:', data.rows)
     return data.rows;
   })
   .catch((err) => {

@@ -26,7 +26,7 @@ router.get('/title', (req, res) => {
     });
 });
 
-router.get('/allTask', (req, res) => {
+router.get('/allTasks', (req, res) => {
   taskQueries.getAllTasksSortedByCategory()
     .then(tasks => {
       res.json({ tasks });
