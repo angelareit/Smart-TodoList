@@ -39,8 +39,6 @@ router.post("/new", (req, res) => {
 
   addTasks(req.body);
   res.redirect(`/home`);
-  // res.send("Hello World");
- // res.render('home');
 });
 
 module.exports = router;
