@@ -24,11 +24,9 @@ router.post("/", (req, res) => {
 });
 
 router.post("/new", (req, res) => {
-  console.log('home new post:', req.body);
+  console.log("home new post:", req.body);
   addTasks(req.body);
   res.redirect(`/home`);
-  // res.send("Hello World");
- // res.render('home');
 });
 
 module.exports = router;
