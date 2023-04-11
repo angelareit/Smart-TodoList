@@ -65,6 +65,9 @@ body {
       margin: 20px;
       border-radius: 20px;
     }
+    h1 {
+      font-family: theme.$font-family-title;
+    }
     section.login-prompt {
       margin: 20px;
       button.login{

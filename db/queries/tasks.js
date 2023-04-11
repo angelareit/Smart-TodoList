@@ -23,4 +23,18 @@ const getTasksByTitle = () => {
       })
 };
 
-module.exports = { getTasksByCategory, getTasksByTitle };
+const getAllTasksSortedByCategory = () => {
+  return db.query( `SELECT cat_id, category_name as catName, array_agg(title)
+  FROM tasks JOIN categories ON  cat_id = categories.category_id GROUP BY cat_id, catName;
+  `)
+  .then(data => {
+    console.log('data:', data.rows)
+
+    return data.rows;
+  })
+  .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { getTasksByCategory, getTasksByTitle ,getAllTasksSortedByCategory  };

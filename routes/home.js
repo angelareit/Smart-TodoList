@@ -35,8 +35,6 @@ router.post("/new-task", (req, res) => {
      })
     }
 */
-
-
   addTasks(req.body);
   res.redirect(`/home`);
 });

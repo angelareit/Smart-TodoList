@@ -26,4 +26,17 @@ router.get('/title', (req, res) => {
     });
 });
 
+router.get('/allTask', (req, res) => {
+  taskQueries.getAllTasksSortedByCategory()
+    .then(tasks => {
+      res.json({ tasks });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
 module.exports = router;

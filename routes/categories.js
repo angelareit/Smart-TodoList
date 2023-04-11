@@ -16,6 +16,12 @@ router.post("/task/:task_id", (req, res) => {
   res.send("categories");
 });
 
+router.put("/task/:task_id", (req, res) => {
+  //const newtask = editTask(req.body);
+  //send the query request to update
+  res.send("categories");
+});
+
 //Deleting the task
 router.post("/task/:task_id", (req, res) => {
   //const newtask = editTask(req.body);

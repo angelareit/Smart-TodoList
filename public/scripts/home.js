@@ -4,15 +4,24 @@ $(document).ready(function() {
 
   $("#cat-1").click(function(event) {
     event.preventDefault();
-   // window.location.replace ('http://localhost:8080/categories/1');
-     $.get('/categories/1', function(data, status) {
+   window.location.replace ('http://localhost:8080/categories/1');
+   /*   $.put('/categories/1', function(data, status) {
       console.log('CAT HOME', data, typeof data);
-    });
+    }); */
 
   });
 
 });
 
+/* const editTasks()=function(taskId){
+  $.ajax({
+    type: 'PUT',
+    url: 'http://example.com/api',
+    contentType: 'application/json',
+    data: JSON.stringify(data), // access in body
+}).done(function () {
+    console.log('SUCCESS');
+} */
 
 const renderTasks = function(tasks, containerID) {
   console.log('logging tasks', tasks);
@@ -35,6 +44,13 @@ function createTaskElement(data) {
 }
 
 const loadTasks = function() {
+/*   //try to make in one api call
+  // Select cat id, cat name, title;
+  $.get('getallcat/', (data){
+    //render each data for each cat element
+  });
+  */
+
   $.get('/api/tasks/byCat/1', function(data, status) {
     //console.log('HOME', data, typeof data);
       renderTasks(data.tasks, '#cat-1');
