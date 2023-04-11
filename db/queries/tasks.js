@@ -1,18 +1,17 @@
 const db = require('../connection');
 
-const getTasks = () => {
-  return db.query('SELECT * FROM tasks;')
+const getTasksByCategory = (category_id) => {
+  return db.query(`SELECT * FROM tasks WHERE cat_id = ${category_id};`)
     .then(data => {
       console.log('data:', data.rows)
       return data.rows;
-
     })
     .catch((err) => {
       console.log(err.message)
     })
 };
 
-const getTaskByTitle = () => {
+const getTasksByTitle = () => {
   return db.query('SELECT title FROM tasks;')
     .then(data => {
       console.log('data:', data.rows)
@@ -24,4 +23,4 @@ const getTaskByTitle = () => {
       })
 };
 
-module.exports = { getTasks, getTaskByTitle };
+module.exports = { getTasksByCategory, getTasksByTitle };
