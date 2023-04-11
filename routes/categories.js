@@ -6,8 +6,10 @@ const taskQueries = require('../db/queries/tasks');
 // get the category List
 router.get("/:cat_id", (req, res) => {
   console.log("category ID: ",req.params.cat_id);
-  taskQueries.getTasksByCategory(req.params.cat_id);
-  res.render("categories");
+  taskQueries.getTasksWithCategoryName(req.params.cat_id).then(tasks => {
+    console.log('TASKS', tasks);
+    res.render("categories", {tasks} );
+  })
 });
 
 // Editing a task
