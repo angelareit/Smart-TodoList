@@ -35,9 +35,9 @@
   <section class="category-container">
     <article class="category">
       <% for (let task of tasks){  %>
-      <div class="task-block">
+      <div class="task-block" id = '<%= task.task_id %>'>
         <div class="title">
-          <i class="complete-box fa-regular fa-square fa-xl"></i>
+          <input type="checkbox"  name="<%= task.title %>" >
           <h2><%= task.title %></h2>
         </div>
         <div class="task-actions">

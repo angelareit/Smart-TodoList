@@ -12,7 +12,7 @@ const getTasksByCategory = (category_id) => {
 };
 
 const getTasksByTitle = () => {
-  return db.query('SELECT title FROM tasks AND is_completed = false;')
+  return db.query('SELECT title FROM tasks WHERE is_completed = false;')
     .then(data => {
       console.log('data:', data.rows)
 
@@ -24,7 +24,7 @@ const getTasksByTitle = () => {
 };
 
 const getTasksWithCategoryName = (category_id) => {
-  return db.query(`SELECT * FROM tasks JOIN categories ON cat_id = categories.category_id WHERE cat_id = ${category_id} AND is_completed = false;`)
+  return db.query(`SELECT * FROM tasks JOIN categories ON cat_id = categories.category_id WHERE cat_id = ${category_id} AND is_completed = false ORDER BY created_date DESC;`)
     .then(data => {
       console.log('tasks with category data:', data.rows)
       return data.rows;
