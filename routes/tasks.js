@@ -2,8 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const taskQueries = require('../db/queries/tasks');
 
-router.get('/', (req, res) => {
-  taskQueries.getTasks()
+router.get('/:cat_id', (req, res) => {
+  taskQueries.getTasksByCategory(req.params.cat_id)
     .then(tasks => {
       res.json({ tasks });
     })
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/title', (req, res) => {
-  taskQueries.getTaskByTitle()
+  taskQueries.getTasksByTitle()
     .then(tasks => {
       res.json({ tasks });
     })
