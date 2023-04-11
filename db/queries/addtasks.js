@@ -5,7 +5,7 @@ const pool = new Pool({
   user: "labber",
   password: "labber",
   host: "localhost",
-  database: "lightbnb",
+  database: "midterm",
 });
 
 // Add new task to database
@@ -18,18 +18,18 @@ const addTasks = function (reqBody) {
   }
   // Query the database
   const query = `
-	INSERT INTO tasks (user_id, cat_id, priority,title, task_due,)
+	INSERT INTO tasks (user_id, cat_id, priority, title, task_due)
   	VALUES ($1, $2, $3, $4, $5)
   	RETURNING *;`;
-  const values = [
-    reqBody.user_id,
-    reqBody.cat_id,
-    reqBody.user_id,
-    reqBody.priority,
-    reqBody.title,
-    reqBody.task_due,
-  ];
-  return pool
+    const values = [
+      1/* reqBody.user_id */,
+      1/* reqBody.cat_id */,
+      1/* reqBody.priority */,
+      reqBody.title,
+      reqBody.task_due,
+    ];
+    console.log(values);
+    return pool
     .query(query, values)
     .then((res) => res.rows[0])
     .catch((err) => {
