@@ -48,7 +48,6 @@ router.post("/new-task", (req, res) => {
 
       //set the category id to Unsorted in DB and "miscellaneous" front end
       if (cat_id===null) {
-
         cat_id = 6;
         console.log('assigning to 6',cat_id);
       }

@@ -49,9 +49,9 @@ const getAllTasksSortedByCategory = () => {
     })
 }
 
-const updateTaskTitle = (taskID, newTitle) => {
+const updateTaskTitleAndCatId = (taskID, newTitle, newCatID) => {
   console.log('db query', taskID, newTitle)
-  return db.query(`UPDATE tasks SET title = '${newTitle}' WHERE task_id = ${taskID} RETURNING *;
+  return db.query(`UPDATE tasks SET title = '${newTitle}', cat_id = '${newCatID}'  WHERE task_id = ${taskID} RETURNING *;
   `)
     .then( data => {
       console.log('updateTaskTitle!', data.rows[0])
@@ -63,4 +63,4 @@ const updateTaskTitle = (taskID, newTitle) => {
 }
 
 
-module.exports = { getTasksByCategory, getTasksByTitle, getAllTasksSortedByCategory, getTasksWithCategoryName, updateTaskTitle };
+module.exports = { getTasksByCategory, getTasksByTitle, getAllTasksSortedByCategory, getTasksWithCategoryName, updateTaskTitleAndCatId };

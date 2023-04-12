@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const taskQueries = require("../db/queries/tasks");
 const { markComplete } = require("../db/queries/helper");
+const {   categorizeTask,
+      categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
 
 // get the category List
 router.get("/:cat_id", (req, res) => {
   console.log("category ID: ", req.params.cat_id);
   taskQueries.getTasksWithCategoryName(req.params.cat_id).then((tasks) => {
     console.log("TASKS", tasks);
-    if (tasks.length > 0)
-    {
+    if (tasks.length > 0) {
       res.render("categories", { tasks });
-    }else
-    {
+    } else {
       res.render("home");
 
     }
@@ -21,10 +21,24 @@ router.get("/:cat_id", (req, res) => {
 
 // Editing a task
 router.post("/updateTask/:task_id", (req, res) => {
-  taskQueries.updateTaskTitle(req.params.task_id,req.body.newTitle)
-  .then(task => {
-    res.redirect(`/categories/${task.cat_id}`);
-  })
+  const newTitle = req.body.newTitle;
+  const taskId =req.params.task_id;
+
+  let cat_id = categorizeTask(newTitle);
+  console.log('HERE',cat_id);
+  if (!cat_id) {
+    cat_id = categorizeTasksByAPI(newTitle);
+    if (!cat_id){
+      cat_id = 6;
+    }
+  }
+
+
+  taskQueries.updateTaskTitleAndCatId(taskId, newTitle , cat_id)
+    .then(task => {
+      //task.cat_id = null;
+      res.redirect(`/categories/${task.cat_id}`);
+    })
 });
 
 //Mark the task completed
