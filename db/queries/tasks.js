@@ -49,4 +49,18 @@ const getAllTasksSortedByCategory = () => {
     })
 }
 
-module.exports = { getTasksByCategory, getTasksByTitle, getAllTasksSortedByCategory, getTasksWithCategoryName };
+const updateTaskTitle = (taskID, newTitle) => {
+  console.log('db query', taskID, newTitle)
+  return db.query(`UPDATE tasks SET title = '${newTitle}' WHERE task_id = ${taskID};
+  `)
+    .then( data => {
+      console.log('updateTaskTitle!')
+      return;
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+
+module.exports = { getTasksByCategory, getTasksByTitle, getAllTasksSortedByCategory, getTasksWithCategoryName, updateTaskTitle };

@@ -13,12 +13,13 @@ router.get("/:cat_id", (req, res) => {
 });
 
 // Editing a task
-router.post("/task/:task_id", (req, res) => {
-  //const newtask = editTask(req.body);
-  res.send("categories");
+router.post("/updateTask/:task_id", (req, res) => {
+  taskQueries.updateTaskTitle(req.params.task_id,req.body.newTitle).then(() => {
+    console.log('edited', req.params.task_id);
+  })
 });
 
-router.put("/task/:task_id", (req, res) => {
+/* router.put("/task/:task_id", (req, res) => {
   //const newtask = editTask(req.body);
   //send the query request to update
   res.send("categories");
@@ -28,7 +29,7 @@ router.put("/task/:task_id", (req, res) => {
 router.post("/task/:task_id", (req, res) => {
   //const newtask = editTask(req.body);
   res.send("categories");
-});
+}); */
 
 //Editing the Task
 
