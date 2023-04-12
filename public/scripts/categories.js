@@ -38,10 +38,6 @@ const deleteTask = function(taskID){
   console.log('deleteTask', taskID);
 }
 
-const completeTask = function(taskID){
-  console.log('completeTask', taskID);
-}
-
 const hideTask = function (taskId, categoryId) {
   $.ajax({
     url: `/categories/${taskId}`,
