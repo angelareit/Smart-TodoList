@@ -55,6 +55,9 @@
                     name="newTitle"
                     placeholder="<%= task.title %>"
                     required
+                    maxlength="200"
+                    pattern="^\S.{0,198}\S?$"
+                    title="Tittle cannot be blank."
                   /><br />
                   <button type="submit">
                     <i class="icon fa-regular fa-circle-check fa-xl"></i>
