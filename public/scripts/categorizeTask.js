@@ -1,3 +1,9 @@
+const WolframAlphaAPI = require('./WolframAlphaApi.js');
+// const APPID = 'KWLEPU-R2Q3H7A2JW';
+const envVariables = process.env;
+const waApi = WolframAlphaAPI(envVariables.APPID);
+
+
 function categorizeTask(title) {
   const keywords = {
     1: ["movie", "series", "show", "watch", "screen", "TV"],
@@ -25,10 +31,60 @@ function categorizeTask(title) {
   return null;
 }
 
+
+// API call to categorize task by title
+// Return the category ID received from API else null
 const categorizeTasksByAPI = (title) => {
-  // API call to categorize task by title
-  // Return the category ID received from API else null
-  return null;
+
+  const keywords = {
+    1: ["televisionprogram", "movie"],
+    2: ["restaurant"],
+    3: ["book", "novel"],
+    4: ["retaillocation", "financial"],
+    5: ["expandedfood", "plant"],
+  };
+  console.log(title);
+  const searchText = title;
+
+  return (async () => {
+
+
+    console.log(WolframAlphaAPI.WolframAlpha);
+
+
+
+    console.log("going to search");
+
+    console.log("\nget full\n");
+    await waApi.getFull(searchText)
+      .then(result => {
+        console.log(result);
+
+        if (result.success) {
+          const datatypes = result.datatypes.split(',');
+
+          datatypes.forEach((datatype) => {
+
+            for (const value in keywords) {
+              if (keywords[value].some((k) =>
+                k.toLowerCase() === datatype.toLowerCase())) {
+                  console.log(datatypes)
+                return value;
+
+              }
+            }
+
+          });
+
+          return 6;
+        }
+
+      })
+      .catch(error => console.error(error));
+    console.log("-----------------------------");
+
+  })();
+
 };
 
 module.exports = { categorizeTask, categorizeTasksByAPI };
