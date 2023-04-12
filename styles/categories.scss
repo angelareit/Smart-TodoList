@@ -38,6 +38,8 @@ body {
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            align-content: center;
+
 
             .title {
               display: flex;
@@ -48,30 +50,45 @@ body {
             .task-update-options {
               display: flex;
               flex-direction: row;
-              align-self:start;
+              align-self: start;
+              align-content: center;
 
-              .update-toggle{
 
-                .task-update-form {
-                  display: flex;
-                  flex-direction: row;
-                  align-self:start;
+              .task-update-form {
+                display: flex;
+                flex-direction: row;
+                align-self: start;
+                align-content: center;
 
-                  input[type=text] {
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
-                    border-bottom: 5px solid theme.$secondaryCol;
-                    width: 100%;
-                  }
 
-                  button[type=submit] {
-                    border: none;
-                    background-color: transparent;
-                    @include theme.horizontal-symmetrical-margin($value: 10px);
+                input[type=text] {
+                  border: none;
+                  outline: none;
+                  background-color: transparent;
+                  border-bottom: 4px solid theme.$secondaryCol;
+                  font-family: theme.$font-family-regular;
+                  font-size: 1.5em;
+
+                  margin-inline-start: 0px;
+                  margin-inline-end: 0px;
+                  font-weight: bold;
+                  transition: width 0.4s ease-in-out;
+                }
+
+                input[type=text]:focus {
+                  width: 100%;
+                }
+
+                button[type=submit] {
+                  border: none;
+                  background-color: transparent;
+
+                  .icon {
+                    color: theme.$secondaryCol;
                   }
                 }
               }
+
 
 
 

@@ -43,6 +43,7 @@ const hideTask = function (taskId, categoryId) {
     },
   });
 };
+
 const completeTask = function (taskID) {
   console.log("completeTask", taskID);
 };
