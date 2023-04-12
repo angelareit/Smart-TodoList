@@ -33,23 +33,30 @@ router.post("/new-task", (req, res) => {
   const task = req.body;
   //check if the category id is given else call categorize
   let cat_id = task.cat_id;
+  console.log('LOG BODY', task);
   const title = task.title;
+  console.log('CAT ID', cat_id);
 
   // categorize the task if cat_id is not provided
   if (!cat_id) {
     cat_id = categorizeTask(title);
-    if (cat_id === null) {
+    console.log('INNER',cat_id);
+    if (!cat_id ) {
       //  categorize with the help of API
       cat_id = categorizeTasksByAPI(title);
+      console.log('AFTER API',cat_id);
+
       //set the category id to Unsorted in DB and "miscellaneous" front end
-      if (cat_id === null) {
+      if (cat_id===null) {
+
         cat_id = 6;
+        console.log('assigning to 6',cat_id);
       }
     }
   }
 
   //Insert the record into the DB
-  addTasks(task.user_id, cat_id, task.priority, task.title, task.task_due);
+  addTasks('1', cat_id, task.priority, task.title, task.task_due);
   res.redirect(`/home`);
 });
 
