@@ -1,6 +1,8 @@
 const WolframAlphaAPI = require('./WolframAlphaApi.js');
-const APPID = 'KWLEPU-R2Q3H7A2JW';
-const waApi = WolframAlphaAPI(APPID);
+// const APPID = 'KWLEPU-R2Q3H7A2JW';
+const envVariables = process.env;
+const waApi = WolframAlphaAPI(envVariables.APPID);
+
 
 function categorizeTask(title) {
   const keywords = {
