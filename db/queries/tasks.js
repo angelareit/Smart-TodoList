@@ -51,11 +51,11 @@ const getAllTasksSortedByCategory = () => {
 
 const updateTaskTitle = (taskID, newTitle) => {
   console.log('db query', taskID, newTitle)
-  return db.query(`UPDATE tasks SET title = '${newTitle}' WHERE task_id = ${taskID};
+  return db.query(`UPDATE tasks SET title = '${newTitle}' WHERE task_id = ${taskID} RETURNING *;
   `)
     .then( data => {
-      console.log('updateTaskTitle!')
-      return;
+      console.log('updateTaskTitle!', data.rows[0])
+      return data.rows[0];
     })
     .catch((err) => {
       console.log(err.message)

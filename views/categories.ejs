@@ -47,8 +47,8 @@
                     <%= task.title %>
                   </h2>
                 </div>
-                <div class="task-update-options">
-                    <form method="POST" class="task-update-form" name='update-entry' action="/categories/updateTask/<%= task.task_id %>">
+                <div class="task-update-options" style="display: none;">
+                    <form method="POST" class="task-update-form" action="/categories/updateTask/<%= task.task_id %>">
                       <input type="text" id="task" name="newTitle" placeholder="<%= task.title %>"><br>
                       <button type="submit"><i class="icon fa-regular fa-circle-check fa-xl"></i></button>
                     </form>

@@ -1,8 +1,8 @@
 $(document).ready(function() {
   //loadTasks();
   console.log('BLUE CHEESE –');
-  console.log( $("section").children('.task-update-options'));
-  $('.task-update-options').css("display","none");
+/*   console.log( $("section").children('.task-update-options'));
+  $('.task-update-options').css("display","none"); */
 });
 
 
@@ -24,7 +24,7 @@ const updateTask = function(taskID){
 
 const updateTaskValue = function (taskID)
 {
-  
+
 }
 
 const deleteTask = function(taskID){

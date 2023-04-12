@@ -14,8 +14,9 @@ router.get("/:cat_id", (req, res) => {
 
 // Editing a task
 router.post("/updateTask/:task_id", (req, res) => {
-  taskQueries.updateTaskTitle(req.params.task_id,req.body.newTitle).then(() => {
-    console.log('edited', req.params.task_id);
+  taskQueries.updateTaskTitle(req.params.task_id,req.body.newTitle)
+  .then(task => {
+    res.redirect(`/categories/${task.cat_id}`);
   })
 });
 
