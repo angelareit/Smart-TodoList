@@ -21,7 +21,14 @@ function categorizeTask(title) {
   }
 
   // If no matching category was found, return null
+
   return null;
 }
 
-module.exports = categorizeTask;
+const categorizeTasksByAPI = (title) => {
+  // API call to categorize task by title
+  // Return the category ID received from API else null
+  return null;
+};
+
+module.exports = { categorizeTask, categorizeTasksByAPI };
