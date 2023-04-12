@@ -48,12 +48,10 @@
                   </h2>
                 </div>
                 <div class="task-update-options">
-                  <div class="update-toggle">
                     <form method="POST" class="task-update-form" name='update-entry' action="/categories/updateTask/<%= task.task_id %>">
                       <input type="text" id="task" name="newTitle" placeholder="<%= task.title %>"><br>
-                      <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                      <button type="submit"><i class="icon fa-regular fa-circle-check fa-xl"></i></button>
                     </form>
-                  </div>
                 </div>
                 <div class="task-actions">
                   <button class="icon-btn" onclick="updateTask(`<%=task.task_id %>`)">

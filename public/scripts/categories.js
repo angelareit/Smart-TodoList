@@ -15,20 +15,16 @@ const loadTasks = function() {
 
 const updateTask = function(taskID){
   console.log('updateTask', taskID);
-  const currentTask= $(`#${taskID}`);
-  let taskTitle = currentTask.find('.title')[0];
-  let taskUpdateOptions = currentTask.find('.task-update-options')[0];
+  const currentTaskBlock= $(`#${taskID}`);
+  let taskTitle = currentTaskBlock.find('.title')[0];
+  let taskUpdateOptions = currentTaskBlock.find('.task-update-options')[0];
   $(taskTitle).toggle();
   $(taskUpdateOptions).toggle();
-/*   console.log('task title', taskTitle);
-  $(taskTitle).replaceWith(
-  `
-  <form method="POST" name= 'update-entry' action="">
-      <input type="text" id="task" name="title"><br>
-      <button type="submit"><i class="fa-solid fa-plus"></i></button>
-  </form> `
-  ); */
+}
 
+const updateTaskValue = function (taskID)
+{
+  
 }
 
 const deleteTask = function(taskID){
