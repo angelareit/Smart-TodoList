@@ -8,7 +8,14 @@ router.get("/:cat_id", (req, res) => {
   console.log("category ID: ", req.params.cat_id);
   taskQueries.getTasksWithCategoryName(req.params.cat_id).then((tasks) => {
     console.log("TASKS", tasks);
-    res.render("categories", { tasks });
+    if (tasks.length > 0)
+    {
+      res.render("categories", { tasks });
+    }else
+    {
+      res.render("home");
+
+    }
   });
 });
 

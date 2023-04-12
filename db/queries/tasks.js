@@ -38,7 +38,7 @@ const getTasksWithCategoryName = (category_id) => {
 
 const getAllTasksSortedByCategory = () => {
   return db.query(`SELECT cat_id as catID, category_name as catName, array_agg(title) as taskTitles
-  FROM tasks JOIN categories ON  cat_id = categories.category_id GROUP BY cat_id, catName;
+  FROM tasks JOIN categories ON  cat_id = categories.category_id WHERE tasks.is_completed = false GROUP BY cat_id, catName;
   `)
     .then(data => {
       console.log('sorted by category data:', data.rows)
