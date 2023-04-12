@@ -25,9 +25,40 @@ function categorizeTask(title) {
   return null;
 }
 
+
+// API call to categorize task by title
+// Return the category ID received from API else null
 const categorizeTasksByAPI = (title) => {
-  // API call to categorize task by title
-  // Return the category ID received from API else null
+  console.log(title);
+  const searchText = title;
+
+  (async () => {
+    const WolframAlphaAPI = require('./WolframAlphaApi.js');
+
+    console.log(WolframAlphaAPI.WolframAlpha);
+
+    const APPID = 'KWLEPU-R2Q3H7A2JW';
+    const waApi = WolframAlphaAPI(APPID);
+
+    console.log("going to search");
+
+    console.log("\nget full\n");
+    await waApi.getFull(searchText)
+      .then(result => {console.log(result)
+
+        if (result.success) {
+          const datatypes = result.datatypes.split(',');
+          datatypes.forEach((datatype) => {
+
+            return categorizeTask(datatype);
+            console.log(datatype);
+          });
+        }
+      })
+      .catch(error => console.error(error));
+    console.log("-----------------------------");
+
+  })();
   return null;
 };
 
