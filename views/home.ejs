@@ -36,7 +36,15 @@
       <h1>THIS IS HOME PAGE</h1>
 
       <form method="POST" id="add-entry" action="/home/new-task">
-        <input type="text" id="task" name="title" required /><br />
+        <input
+          type="text"
+          id="task"
+          name="title"
+          required
+          maxlength="200"
+          pattern="^\S.{0,198}\S?$"
+          title="Tittle cannot be blank."
+        /><br />
         <button type="submit"><i class="fa-solid fa-plus"></i></button>
       </form>
 
