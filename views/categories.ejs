@@ -37,32 +37,47 @@
       <h1><%= tasks[0].category_name %></h1>
       <section class="category-container">
         <article class="category">
-          <% if (tasks.length > 0){
-          for (let task of tasks){ %>
-            <div class="task-block" id='<%= task.task_id %>'>
-              <div class="task-display">
-                <div class="title">
-                  <h2 class="title-name">
-                    <%= task.title %>
-                  </h2>
-                </div>
-                <div class="task-update-options" style="display: none;">
-                    <form method="POST" class="task-update-form" action="/categories/updateTask/<%= task.task_id %>">
-                      <input type="text" id="task" name="newTitle" placeholder="<%= task.title %>"><br>
-                      <button type="submit"><i class="icon fa-regular fa-circle-check fa-xl"></i></button>
-                    </form>
-                </div>
-                <div class="task-actions">
-                  <button class="icon-btn" onclick="updateTask(`<%=task.task_id %>`)">
-                    <i class="edit action icon fa-solid fa-pen"></i>
+          <% if (tasks.length > 0){ for (let task of tasks){ %>
+          <div class="task-block" id="<%= task.task_id %>">
+            <div class="task-display">
+              <div class="title">
+                <h2 class="title-name"><%= task.title %></h2>
+              </div>
+              <div class="task-update-options" style="display: none">
+                <form
+                  method="POST"
+                  class="task-update-form"
+                  action="/categories/updateTask/<%= task.task_id %>"
+                >
+                  <input
+                    type="text"
+                    id="task"
+                    name="newTitle"
+                    placeholder="<%= task.title %>"
+                    required
+                  /><br />
+                  <button type="submit">
+                    <i class="icon fa-regular fa-circle-check fa-xl"></i>
                   </button>
-                  <button class="icon-btn" onclick="hideTask(`<%=task.task_id %>`)">
-                    <i class="delete action icon fa-solid fa-check"></i>
-                  </button>
-                </div>
+                </form>
+              </div>
+              <div class="task-actions">
+                <button
+                  class="icon-btn"
+                  onclick="updateTask(`<%=task.task_id %>`)"
+                >
+                  <i class="edit action icon fa-solid fa-pen"></i>
+                </button>
+                <button
+                  class="icon-btn"
+                  onclick="hideTask(`<%=task.task_id %>`)"
+                >
+                  <i class="delete action icon fa-solid fa-check"></i>
+                </button>
               </div>
             </div>
-            <% }} %>
+          </div>
+          <% }} %>
         </article>
       </section>
     </main>
