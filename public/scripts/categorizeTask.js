@@ -36,13 +36,7 @@ function categorizeTask(title) {
 // Return the category ID received from API else null
 const categorizeTasksByAPI = (title) => {
 
-  const keywords = {
-    1: ["televisionprogram", "movie"],
-    2: ["restaurant"],
-    3: ["book", "novel"],
-    4: ["retaillocation", "financial"],
-    5: ["expandedfood", "plant"],
-  };
+
   console.log(title);
   const searchText = title;
 
@@ -56,33 +50,35 @@ const categorizeTasksByAPI = (title) => {
     console.log("going to search");
 
     console.log("\nget full\n");
-    await waApi.getFull(searchText)
-      .then(result => {
-        console.log(result);
 
-        if (result.success) {
-          const datatypes = result.datatypes.split(',');
+    let result = await waApi.getFull(searchText)
+      // .then(result => {
+      //   console.log(result);
 
-          datatypes.forEach((datatype) => {
+      //   if (result.success) {
+      //     const datatypes = result.datatypes.split(',');
 
-            for (const value in keywords) {
-              if (keywords[value].some((k) =>
-                k.toLowerCase() === datatype.toLowerCase())) {
-                  console.log(datatypes)
-                return value;
+      //     datatypes.forEach((datatype) => {
 
-              }
-            }
+      //       for (const value in keywords) {
+      //         if (keywords[value].some((k) =>
+      //           k.toLowerCase() === datatype.toLowerCase())) {
+      //             console.log(datatypes)
+      //             console.log("+++++value", value)
+      //           return value;
 
-          });
+      //         }
+      //       }
 
-          return 6;
-        }
+      //     });
 
-      })
-      .catch(error => console.error(error));
+      //     return 1;
+      //   }
+
+      // })
+      // .catch(error => console.error(error));
     console.log("-----------------------------");
-
+    return result;
   })();
 
 };
