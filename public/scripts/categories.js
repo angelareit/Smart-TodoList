@@ -32,6 +32,9 @@ const hideTask = function (taskId, categoryId) {
   });
 };
 
-const completeTask = function (taskID) {
-  console.log("completeTask", taskID);
+const showCompletedTasks = function (categoryId) {
+  console.log('before get', categoryId);
+  $.get( `/api/tasks/completed/${categoryId}`).then(data => {
+    console.log('PROMISE GET', data.html);
+  });
 };

@@ -1,9 +1,9 @@
 const db = require('../connection');
 
-const getTasksByCategory = (category_id) => {
-  return db.query(`SELECT * FROM tasks WHERE cat_id = ${category_id} AND is_completed = false;`)
+const getTasksByCategory = (category_id, is_completed= false) => {
+  return db.query(`SELECT * FROM tasks WHERE cat_id = ${category_id} AND is_completed = ${is_completed};`)
     .then(data => {
-      console.log('data:', data.rows)
+      console.log(date.rows)
       return data.rows;
     })
     .catch((err) => {

@@ -150,6 +150,21 @@ body {
       }
     }
 
+    button.see-completed-btn {
+      align-self: right;
+      border: none;
+      background-color: theme.$secondaryCol;
+      color: white;
+      padding: 5px;
+      border-radius: 20px;
+      max-width: 200px;
+      cursor: pointer;
+     @include theme.symmetrical-margin($h-value: 35px, $v-value:20px);
+
+      span {
+        @include theme.horizontal-symmetrical-margin($value: 10px);
+      }
+    }
   }
 
 

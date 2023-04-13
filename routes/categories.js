@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const taskQueries = require("../db/queries/tasks");
+const categoryQueries = require("../db/queries/categories");
 const { markComplete } = require("../db/queries/helper");
 const { categorizeTask,
   categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
 
-// get the category List
+// get the category list and the entries associated with it
 router.get("/:cat_id", (req, res) => {
   taskQueries.getTasksWithCategoryName(req.params.cat_id).then((tasks) => {
+    console.log(tasks);
     if (tasks.length > 0) {
       res.render("categories", { tasks });
     } else {
-      res.render("home");
+      res.redirect(`/home`);
     }
   });
 });
@@ -31,7 +33,7 @@ router.post("/updateTask/:task_id", (req, res) => {
   } */
   if (!cat_id) {
     //  categorize with the help of API
-    categorizeTasksByAPI(title).then(result => {
+    categorizeTasksByAPI(newTitle).then(result => {
       const keywords = {
         1: ["televisionprogram", "movie"],
         2: ["restaurant"],
@@ -59,16 +61,22 @@ router.post("/updateTask/:task_id", (req, res) => {
         cat_id = 6;
         console.log('assigning to 6', cat_id);
       }
+      taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
+        .then(task => {
+          //task.cat_id = null;
+          res.redirect(`/categories/${task.cat_id}`);
+        })
     })
 
+  } else {
+    //update db and redirect page to the new category of the last edited item
+    taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
+      .then(task => {
+        //task.cat_id = null;
+        res.redirect(`/categories/${task.cat_id}`);
+      })
   }
 
-//update db and redirect page to the new category of the last edited item
-  taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
-    .then(task => {
-      //task.cat_id = null;
-      res.redirect(`/categories/${task.cat_id}`);
-    })
 });
 
 //Mark the task completed
@@ -84,4 +92,5 @@ router.post("/:taskId", (req, res) => {
       res.sendStatus(500);
     });
 });
+
 module.exports = router;

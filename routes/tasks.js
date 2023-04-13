@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const taskQueries = require('../db/queries/tasks');
 
 //api route for getting tasks by category
@@ -41,5 +41,17 @@ router.get('/allTasks', (req, res) => {
     });
 });
 
+//api route to get all completed task associated with a category
+router.get("/completed/:cat_id", (req, res) => {
+  console.log('api get route',req.params.cat_id);
+  taskQueries.getTasksByCategory(req.params.cat_id,false).then(tasks => {
+   console.log('inside api', typeof tasks);
+    res.json({ tasks });
+  }).catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });;
+});
 
 module.exports = router;
