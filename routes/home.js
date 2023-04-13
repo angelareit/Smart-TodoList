@@ -27,8 +27,9 @@ router.get("/", (req, res) => {
 }); */
 
 router.post("/", (req, res) => {
-  res.render("home");
-});
+  categoryQueries.getCategoryList().then(categories => {
+    res.render("home", {categories});
+  });});
 
 // Add new task
 router.post("/new-task", (req, res) => {

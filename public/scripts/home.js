@@ -2,7 +2,10 @@ $(document).ready(function() {
   loadCategories();
   console.log('YELLOW CHEESE –');
 
-  $('#category-options-button').on('click', function (e) { $('#category-options').toggle()});
+  $('#category-options-button').on('click', function (e) {
+    $('#category-options').toggle()
+    $(this).find('i').toggleClass('fa-solid fa-angles-down').toggleClass('fa-solid fa-angles-up');
+  });
 
   $(".cat-option").on('click', function (e) {
     console.log('OPTION SELECTED');
@@ -31,7 +34,7 @@ function createCategoryBlock(data) {
   let elementList = '';
   for( let taskTitle of  data.tasktitles)
   {
-    elementList += `<li> ${taskTitle} </li>`;
+    elementList += createTaskElement(taskTitle);
   }
 
   const element = `
@@ -45,7 +48,7 @@ function createCategoryBlock(data) {
 
 function createTaskElement(data) {
   const element =
-    `<li> ${data.title} </li>`;
+    `<div class='task-list-element'><i class="icon fa-solid fa-caret-right"></i> <span>${data} </span></div>`;
   return element;
 }
 

@@ -6,7 +6,7 @@ body {
   color: theme.$fontBlack;
   @extend %white-background;
 
-  main {
+  main.home {
     display: flex;
     flex-direction: column;
     @include theme.symmetrical-padding($h-value: 35px, $v-value: 20px);
@@ -91,8 +91,6 @@ body {
 
     }
 
-
-
     .category-container {
       display: flex;
       flex-direction: row;
@@ -102,7 +100,6 @@ body {
       article.category {
         display: flex;
         flex-direction: column;
-
         background-color: rgb(255, 255, 255);
         min-width: 300px;
         min-height: 200px;
@@ -116,7 +113,17 @@ body {
           font-family: theme.$font-family-regular;
           align-self: center;
         }
+        .task-list-element{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          @include theme.vertical-symmetrical-margin($value: 5px);
 
+          .icon{
+            @include theme.horizontal-symmetrical-margin($value: 5px);
+
+          }
+        }
       }
 
       article.category:hover {
