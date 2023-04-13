@@ -36,10 +36,10 @@ router.post("/updateTask/:task_id", (req, res) => {
     categorizeTasksByAPI(newTitle).then(result => {
       const keywords = {
         1: ["televisionprogram", "movie"],
-        2: ["restaurant"],
+        2: ["restaurant", "plant"],
         3: ["book", "novel"],
         4: ["retaillocation", "financial"],
-        5: ["expandedfood", "plant"],
+        5: ["expandedfood"],
       };
 
       if (result.success) {
