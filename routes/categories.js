@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const taskQueries = require("../db/queries/tasks");
 const { markComplete } = require("../db/queries/helper");
-const {   categorizeTask,
-      categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
+const { categorizeTask,
+  categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
 
 // get the category List
 router.get("/:cat_id", (req, res) => {
@@ -19,19 +19,52 @@ router.get("/:cat_id", (req, res) => {
 // Editing a task
 router.post("/updateTask/:task_id", (req, res) => {
   const newTitle = req.body.newTitle;
-  const taskId =req.params.task_id;
+  const taskId = req.params.task_id;
 
   let cat_id = categorizeTask(newTitle);
-  console.log('HERE',cat_id);
-  if (!cat_id) {
+  console.log('HERE', cat_id);
+  /* if (!cat_id) {
     cat_id = categorizeTasksByAPI(newTitle);
     if (!cat_id){
       cat_id = 6;
     }
+  } */
+  if (!cat_id) {
+    //  categorize with the help of API
+    categorizeTasksByAPI(title).then(result => {
+      const keywords = {
+        1: ["televisionprogram", "movie"],
+        2: ["restaurant"],
+        3: ["book", "novel"],
+        4: ["retaillocation", "financial"],
+        5: ["expandedfood", "plant"],
+      };
+
+      if (result.success) {
+        const datatypes = result.datatypes.split(',');
+        datatypes.forEach((datatype) => {
+          for (const value in keywords) {
+            if (keywords[value].some((k) =>
+              k.toLowerCase() === datatype.toLowerCase())) {
+              console.log(datatypes)
+              console.log("+++++value", value)
+              cat_id = value;
+            }
+          }
+        });
+      }
+
+      //if api result is unsuccessful, assign to unsorted
+      if (cat_id === null) {
+        cat_id = 6;
+        console.log('assigning to 6', cat_id);
+      }
+    })
+
   }
 
 
-  taskQueries.updateTaskTitleAndCatId(taskId, newTitle , cat_id)
+  taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
     .then(task => {
       //task.cat_id = null;
       res.redirect(`/categories/${task.cat_id}`);

@@ -1,9 +1,9 @@
 const db = require('../connection');
 
+//returns the list of all categories on the db
 const getCategoryList = () => {
   return db.query(`SELECT * FROM categories;`)
     .then(data => {
-      //console.log('CATEGORY LIST:', data.rows)
       return data.rows;
     })
     .catch((err) => {

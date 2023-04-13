@@ -3,21 +3,16 @@ const router = express.Router();
 const categoryQueries = require("../db/queries/categories");
 const { getTasks, getTaskByTitle } = require("../db/queries/tasks");
 const { addTasks } = require("../db/queries/helper.js");
-
 const {
   categorizeTask,
   categorizeTasksByAPI,
 } = require("../public/scripts/categorizeTask.js");
 
-const data = [
-  { id: 1, text: "Hello There" },
-  { id: 2, text: "Hello Ang" },
-];
+
 
 router.get("/", (req, res) => {
-  //console.log("got home");
   categoryQueries.getCategoryList().then(categories => {
-    res.render("home", {categories});
+    res.render("home", { categories });
   });
 });
 
@@ -28,8 +23,9 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   categoryQueries.getCategoryList().then(categories => {
-    res.render("home", {categories});
-  });});
+    res.render("home", { categories });
+  });
+});
 
 // Add new task
 router.post("/new-task", (req, res) => {
@@ -52,7 +48,6 @@ router.post("/new-task", (req, res) => {
       //  categorize with the help of API
       categorizeTasksByAPI(title).then(result => {
 
-
         const keywords = {
           1: ["televisionprogram", "movie"],
           2: ["restaurant"],
@@ -61,40 +56,32 @@ router.post("/new-task", (req, res) => {
           5: ["expandedfood", "plant"],
         };
 
-          if (result.success) {
+        if (result.success) {
           const datatypes = result.datatypes.split(',');
-
           datatypes.forEach((datatype) => {
-
-
             for (const value in keywords) {
               if (keywords[value].some((k) =>
                 k.toLowerCase() === datatype.toLowerCase())) {
-                  console.log(datatypes)
-                  console.log("+++++value", value)
+                console.log(datatypes)
+                console.log("+++++value", value)
                 cat_id = value;
-
               }
             }
-
           });
 
 
           // return cat_id;
         }
-        if (cat_id===null) {
-          cat_id = 6;
-          console.log('assigning to 6',cat_id);
-        }
 
+        //if api result is unsuccessful, assign to unsorted
+        if (cat_id === null) {
+          cat_id = 6;
+          console.log('assigning to 6', cat_id);
+        }
         addTasks('1', cat_id, task.priority, task.title, task.task_due);
         res.redirect(`/home`);
 
-        console.log('AFTER API',cat_id);
       })
-
-
-      //set the category id to Unsorted in DB and "miscellaneous" front end
 
     }
   }else{
@@ -102,9 +89,6 @@ router.post("/new-task", (req, res) => {
     res.redirect(`/home`);
   }
 
-
-
-  //Insert the record into the DB
 
 });
 
