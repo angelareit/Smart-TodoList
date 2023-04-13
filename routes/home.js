@@ -22,7 +22,6 @@ router.post("/new-task", (req, res) => {
   //check if the category id is given else call categorize
   let cat_id = task.cat_id;
   const title = task.title;
-  console.log('CAT ID', cat_id);
 
   // categorize the task if cat_id is not provided
   if (!cat_id) {
@@ -32,7 +31,6 @@ router.post("/new-task", (req, res) => {
           res.redirect(`/home`);
           return;
     }
-    console.log('INNER',cat_id);
     if (!cat_id ) {
       //  categorize with the help of API
       categorizeTasksByAPI(title).then(result => {
@@ -51,34 +49,24 @@ router.post("/new-task", (req, res) => {
             for (const value in keywords) {
               if (keywords[value].some((k) =>
                 k.toLowerCase() === datatype.toLowerCase())) {
-                console.log(datatypes)
-                console.log("+++++value", value)
                 cat_id = value;
               }
             }
           });
-
-
-          // return cat_id;
         }
 
         //if api result is unsuccessful, assign to unsorted
         if (cat_id === null) {
           cat_id = 6;
-          console.log('assigning to 6', cat_id);
         }
         addTasks('1', cat_id, task.priority, task.title, task.task_due);
         res.redirect(`/home`);
-
       })
-
     }
   }else{
     addTasks('1', cat_id, task.priority, task.title, task.task_due);
     res.redirect(`/home`);
   }
-
-
 });
 
 module.exports = router;
