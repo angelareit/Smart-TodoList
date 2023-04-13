@@ -14,8 +14,6 @@ const getTasksByCategory = (category_id) => {
 const getTasksByTitle = () => {
   return db.query('SELECT title FROM tasks WHERE is_completed = false;')
     .then(data => {
-      console.log('data:', data.rows)
-
       return data.rows;
     })
     .catch((err) => {
@@ -26,7 +24,6 @@ const getTasksByTitle = () => {
 const getTasksWithCategoryName = (category_id) => {
   return db.query(`SELECT * FROM tasks JOIN categories ON cat_id = categories.category_id WHERE cat_id = ${category_id} AND is_completed = false ORDER BY created_date DESC;`)
     .then(data => {
-      console.log('tasks with category data:', data.rows)
       return data.rows;
     })
     .catch((err) => {
@@ -41,7 +38,6 @@ const getAllTasksSortedByCategory = () => {
   FROM tasks JOIN categories ON  cat_id = categories.category_id WHERE tasks.is_completed = false GROUP BY cat_id, catName;
   `)
     .then(data => {
-      console.log('sorted by category data:', data.rows)
       return data.rows;
     })
     .catch((err) => {
@@ -54,7 +50,6 @@ const updateTaskTitleAndCatId = (taskID, newTitle, newCatID) => {
   return db.query(`UPDATE tasks SET title = '${newTitle}', cat_id = '${newCatID}'  WHERE task_id = ${taskID} RETURNING *;
   `)
     .then( data => {
-      console.log('updateTaskTitle!', data.rows[0])
       return data.rows[0];
     })
     .catch((err) => {

@@ -27,7 +27,6 @@ router.get("/", (req, res) => {
 }); */
 
 router.post("/", (req, res) => {
-  //console.log("HELLO HOME!");
   res.render("home");
 });
 
@@ -36,7 +35,6 @@ router.post("/new-task", (req, res) => {
   const task = req.body;
   //check if the category id is given else call categorize
   let cat_id = task.cat_id;
-  console.log('LOG BODY', task);
   const title = task.title;
   console.log('CAT ID', cat_id);
 
@@ -98,7 +96,12 @@ router.post("/new-task", (req, res) => {
       //set the category id to Unsorted in DB and "miscellaneous" front end
 
     }
+  }else{
+    addTasks('1', cat_id, task.priority, task.title, task.task_due);
+    res.redirect(`/home`);
   }
+
+
 
   //Insert the record into the DB
 

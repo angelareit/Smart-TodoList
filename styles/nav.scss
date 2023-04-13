@@ -13,4 +13,11 @@ nav {
     font-size: larger;
     @include theme.horizontal-symmetrical-margin($value: 35px)
   }
+  h1:hover {
+    font-family: theme.$font-family-title;
+    font-size: x-large;
+    @include theme.horizontal-symmetrical-margin($value: 35px);
+    cursor: pointer;
+  }
+
 }

@@ -2,9 +2,10 @@ $(document).ready(function() {
   loadCategories();
   console.log('YELLOW CHEESE –');
 
-  $('#')
+  $('#category-options-button').on('click', function (e) { $('#category-options').toggle()});
 
-  $("[type='radio']").on('click', function (e) {
+  $(".cat-option").on('click', function (e) {
+    console.log('OPTION SELECTED');
     var previousValue = $(this).attr('previousValue');
     if (previousValue == 'true') {
         this.checked = false;

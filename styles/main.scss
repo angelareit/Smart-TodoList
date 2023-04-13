@@ -7,29 +7,91 @@ body {
   @extend %white-background;
 
   main {
-    @include theme.horizontal-symmetrical-margin($value: 35px);
     display: flex;
     flex-direction: column;
+    @include theme.symmetrical-padding($h-value: 35px, $v-value: 20px);
 
 
-    #add-entry {
-      display: flex;
-      flex-direction: row;
+    .user-input-area {
+      @include theme.vertical-symmetrical-margin($value: 20px);
 
-      input[type=text] {
-        border: none;
-        outline: none;
-        background-color: transparent;
-        border-bottom: 5px solid theme.$secondaryCol;
-        width: 100%;
+      #add-entry {
+        display: flex;
+        flex-direction: column;
+
+        .icon {
+          color: theme.$secondaryCol;
+          cursor: pointer;
+        }
+
+        .title-entry-section {
+          display: flex;
+          flex-direction: row;
+
+          input[type=text] {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom: 5px solid theme.$secondaryCol;
+            width: 100%;
+          }
+
+          button[type=submit] {
+            border: none;
+            background-color: transparent;
+            @include theme.horizontal-symmetrical-margin($value: 5px);
+          }
+
+          button[type=button] {
+            border: none;
+            background-color: transparent;
+            @include theme.horizontal-symmetrical-margin($value: 5px);
+          }
+        }
+
+        #category-options {
+          display: flex;
+          flex-direction: row;
+
+          label.cat-option {
+            @include theme.horizontal-symmetrical-margin($value: 5px);
+
+            input[type="radio"] {
+              display: none;
+
+              +.box {
+                padding: 5px;
+                border-radius: 5px;
+                border: 3px solid theme.$secondaryCol;
+                @include theme.vertical-symmetrical-margin($value: 5px);
+
+                span {
+                  @include theme.vertical-symmetrical-margin($value: 2px);
+                  color: theme.$secondaryCol;
+                }
+              }
+
+              &:checked {
+                +.box {
+                  padding: 5px;
+                  border-radius: 5px;
+                  border: 3px solid theme.$secondaryCol;
+                  background-color: theme.$secondaryCol;
+                  @include theme.vertical-symmetrical-margin($value: 5px);
+
+                  span {
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
 
-      button[type=submit] {
-        border: none;
-        background-color: transparent;
-        @include theme.horizontal-symmetrical-margin($value: 10px);
-      }
     }
+
+
 
     .category-container {
       display: flex;
@@ -44,7 +106,7 @@ body {
         background-color: rgb(255, 255, 255);
         min-width: 300px;
         min-height: 200px;
-        margin: 5px;
+        margin: 15px;
         padding: 15px;
         border-radius: 20px;
 
@@ -55,6 +117,11 @@ body {
           align-self: center;
         }
 
+      }
+
+      article.category:hover {
+        box-shadow: 10px 10px 0px 1px theme.$secondaryCol;
+        cursor: pointer;
       }
 
     }

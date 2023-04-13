@@ -3,7 +3,7 @@ const db = require('../connection');
 const getCategoryList = () => {
   return db.query(`SELECT * FROM categories;`)
     .then(data => {
-      console.log('CATEGORY LIST:', data.rows)
+      //console.log('CATEGORY LIST:', data.rows)
       return data.rows;
     })
     .catch((err) => {

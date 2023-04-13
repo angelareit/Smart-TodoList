@@ -25,6 +25,22 @@ $fontBlack: #011627;
   margin-right: $h-value;
 }
 
+@mixin symmetrical-padding($h-value: 10px, $v-value:10px) {
+  padding-top: $v-value;
+  padding-bottom: $v-value;
+  padding-left: $h-value ;
+  padding-right: $h-value;
+}
+
+@mixin vertical-symmetrical-padding($value: 10px) {
+  padding-top: $value ;
+  padding-bottom: $value;
+}
+@mixin horizontal-symmetrical-padding($value: 10px) {
+ padding-left: $value ;
+ padding-right: $value;
+}
+
 %white-background {
   background-color: #f4f1f1;
 /*   background-image: url("https://www.transparenttextures.com/patterns/billie-holiday.png");

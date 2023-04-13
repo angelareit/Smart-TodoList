@@ -7,9 +7,9 @@ body {
   @extend %white-background;
 
   main {
-    @include theme.horizontal-symmetrical-margin($value: 35px);
     display: flex;
     flex-direction: column;
+    @include theme.symmetrical-padding($h-value: 35px, $v-value:20px);
 
 
     .category-container {
@@ -28,6 +28,7 @@ body {
         margin: 5px;
         padding: 30px;
         border-radius: 20px;
+        box-shadow: 10px 10px 0px 1px theme.$secondaryCol;
 
         .task-block {
           display: flex;
