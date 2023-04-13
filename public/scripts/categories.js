@@ -33,8 +33,18 @@ const hideTask = function (taskId, categoryId) {
 };
 
 const showCompletedTasks = function (categoryId) {
-  console.log('before get', categoryId);
+  console.log('before get', categoryId,);
   $.get( `/api/tasks/completed/${categoryId}`).then(data => {
-    console.log('PROMISE GET', data.html);
+    $('.category').append(createCompletedElements(data));
+    console.log('PROMISE GET', data);
   });
+
 };
+
+const createCompletedElements= function(data){
+  //for (cosy )
+  const element = {
+
+  }
+  return element;
+}
