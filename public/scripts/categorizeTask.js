@@ -1,11 +1,10 @@
-const WolframAlphaAPI = require('./WolframAlphaApi.js');
+const WolframAlphaAPI = require("./WolframAlphaAPI.js");
 const envVariables = process.env;
 const waApi = WolframAlphaAPI(envVariables.APPID);
 
-
 function categorizeTask(title) {
   const keywords = {
-    1: ["movie", "series", "show", "watch", "screen", "TV"],
+    1: ["movie", "series", "show", "watch", "screen", "tv"],
     2: ["restaurant", "cafe", "food", "eat"],
     3: ["book", "novel", "read"],
     4: ["product", "buy", "purchase"],
@@ -34,7 +33,7 @@ const categorizeTasksByAPI = (title) => {
   const searchText = title;
 
   return (async () => {
-    let result = await waApi.getFull(searchText)
+    let result = await waApi.getFull(searchText);
     return result;
   })();
 };
