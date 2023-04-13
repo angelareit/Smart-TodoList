@@ -2,6 +2,20 @@ $(document).ready(function() {
   loadCategories();
   console.log('YELLOW CHEESE –');
 
+  $('#')
+
+  $("[type='radio']").on('click', function (e) {
+    var previousValue = $(this).attr('previousValue');
+    if (previousValue == 'true') {
+        this.checked = false;
+        $(this).attr('previousValue', this.checked);
+    }
+    else {
+        this.checked = true;
+        $(this).attr('previousValue', this.checked);
+    }
+});
+
 });
 
 const renderCategories = function(categories) {

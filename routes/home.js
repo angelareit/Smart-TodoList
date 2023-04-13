@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const categoryQueries = require("../db/queries/categories");
 const { getTasks, getTaskByTitle } = require("../db/queries/tasks");
 const { addTasks } = require("../db/queries/helper.js");
 
@@ -15,7 +16,9 @@ const data = [
 
 router.get("/", (req, res) => {
   //console.log("got home");
-  res.render("home");
+  categoryQueries.getCategoryList().then(categories => {
+    res.render("home", {categories});
+  });
 });
 
 /* router.get('/new', (req, res) => {

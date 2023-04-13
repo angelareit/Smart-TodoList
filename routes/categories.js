@@ -7,14 +7,11 @@ const {   categorizeTask,
 
 // get the category List
 router.get("/:cat_id", (req, res) => {
-  console.log("category ID: ", req.params.cat_id);
   taskQueries.getTasksWithCategoryName(req.params.cat_id).then((tasks) => {
-    console.log("TASKS", tasks);
     if (tasks.length > 0) {
       res.render("categories", { tasks });
     } else {
       res.render("home");
-
     }
   });
 });
