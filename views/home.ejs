@@ -41,7 +41,7 @@
           </div>
 
           <div id="category-options" style="display:none;">
-            <% if (categories>0) {for (let cat of categories) { %>
+            <% for (let cat of categories) { %>
               <label class="cat-option">
                 <input type="radio" name="cat_id" value=<%=cat.category_id%> class='cat-option'/>
                 <div class="box">
@@ -50,7 +50,7 @@
                   </span>
                 </div>
               </label>
-              <% } }%>
+              <% } %>
           </div>
 
         </form>

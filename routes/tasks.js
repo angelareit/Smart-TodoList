@@ -44,7 +44,7 @@ router.get('/allTasks', (req, res) => {
 //api route to get all completed task associated with a category
 router.get("/completed/:cat_id", (req, res) => {
   console.log('api get route',req.params.cat_id);
-  taskQueries.getTasksByCategory(req.params.cat_id,false).then(tasks => {
+  taskQueries.getTasksByCategory(req.params.cat_id,true).then(tasks => {
    console.log('inside api', typeof tasks);
     res.json({ tasks });
   }).catch(err => {
