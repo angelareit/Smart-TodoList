@@ -28,10 +28,10 @@ router.post("/new-task", (req, res) => {
     cat_id = categorizeTask(title);
     if (cat_id) {
       addTasks('1', cat_id, task.priority, task.title, task.task_due);
-          res.redirect(`/home`);
-          return;
+      res.redirect(`/home`);
+      return;
     }
-    if (!cat_id ) {
+    if (!cat_id) {
       //  categorize with the help of API
       categorizeTasksByAPI(title).then(result => {
 
@@ -63,7 +63,7 @@ router.post("/new-task", (req, res) => {
         res.redirect(`/home`);
       })
     }
-  }else{
+  } else {
     addTasks('1', cat_id, task.priority, task.title, task.task_due);
     res.redirect(`/home`);
   }
