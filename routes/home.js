@@ -43,23 +43,65 @@ router.post("/new-task", (req, res) => {
   // categorize the task if cat_id is not provided
   if (!cat_id) {
     cat_id = categorizeTask(title);
+    if (cat_id) {
+      addTasks('1', cat_id, task.priority, task.title, task.task_due);
+          res.redirect(`/home`);
+          return;
+    }
     console.log('INNER',cat_id);
     if (!cat_id ) {
       //  categorize with the help of API
-      cat_id = categorizeTasksByAPI(title);
-      console.log('AFTER API',cat_id);
+      categorizeTasksByAPI(title).then(result => {
+
+
+        const keywords = {
+          1: ["televisionprogram", "movie"],
+          2: ["restaurant"],
+          3: ["book", "novel"],
+          4: ["retaillocation", "financial"],
+          5: ["expandedfood", "plant"],
+        };
+
+          if (result.success) {
+          const datatypes = result.datatypes.split(',');
+
+          datatypes.forEach((datatype) => {
+
+
+            for (const value in keywords) {
+              if (keywords[value].some((k) =>
+                k.toLowerCase() === datatype.toLowerCase())) {
+                  console.log(datatypes)
+                  console.log("+++++value", value)
+                cat_id = value;
+
+              }
+            }
+
+          });
+
+
+          // return cat_id;
+        }
+        if (cat_id===null) {
+          cat_id = 6;
+          console.log('assigning to 6',cat_id);
+        }
+
+        addTasks('1', cat_id, task.priority, task.title, task.task_due);
+        res.redirect(`/home`);
+
+        console.log('AFTER API',cat_id);
+      })
+
 
       //set the category id to Unsorted in DB and "miscellaneous" front end
-      if (cat_id===null) {
-        cat_id = 6;
-        console.log('assigning to 6',cat_id);
-      }
+
     }
   }
 
   //Insert the record into the DB
-  addTasks('1', cat_id, task.priority, task.title, task.task_due);
-  res.redirect(`/home`);
+
 });
 
 module.exports = router;
