@@ -9,19 +9,8 @@ const {
 } = require("../public/scripts/categorizeTask.js");
 
 
-
+//populate the homepage with categories from the db
 router.get("/", (req, res) => {
-  categoryQueries.getCategoryList().then(categories => {
-    res.render("home", { categories });
-  });
-});
-
-/* router.get('/new', (req, res) => {
-  console.log('got home');
-  res.send({data});
-}); */
-
-router.post("/", (req, res) => {
   categoryQueries.getCategoryList().then(categories => {
     res.render("home", { categories });
   });

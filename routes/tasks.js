@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const taskQueries = require('../db/queries/tasks');
 
+//api route for getting tasks by category
 router.get('/byCat/:cat_id', (req, res) => {
   taskQueries.getTasksByCategory(req.params.cat_id)
     .then(tasks => {
@@ -14,6 +15,7 @@ router.get('/byCat/:cat_id', (req, res) => {
     });
 });
 
+//api route for getting tasks title by category
 router.get('/title', (req, res) => {
   taskQueries.getTasksByTitle()
     .then(tasks => {
@@ -26,6 +28,7 @@ router.get('/title', (req, res) => {
     });
 });
 
+//api route for getting all tasks titles sorted by category
 router.get('/allTasks', (req, res) => {
   taskQueries.getAllTasksSortedByCategory()
     .then(tasks => {

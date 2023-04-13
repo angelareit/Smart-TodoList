@@ -63,7 +63,7 @@ router.post("/updateTask/:task_id", (req, res) => {
 
   }
 
-
+//update db and redirect page to the new category of the last edited item
   taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
     .then(task => {
       //task.cat_id = null;

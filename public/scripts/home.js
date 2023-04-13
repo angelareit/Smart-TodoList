@@ -22,21 +22,21 @@ $(document).ready(function() {
 
 });
 
+//render all category container
 const renderCategories = function(categories) {
   categories.forEach(element => {
     const categoryHTML = createCategoryBlock(element);
     $('.category-container').append(categoryHTML)
   });
-
 }
+
+//input data: assumes that the object has an array of taskTitles, catid, catname
 function createCategoryBlock(data) {
-  console.log('categoryBlock', typeof data, data);
   let elementList = '';
   for( let taskTitle of  data.tasktitles)
   {
     elementList += createTaskElement(taskTitle);
   }
-
   const element = `
           <article class="category" id = "${data.catid}">
           <h2>${data.catname}</h2>
@@ -45,14 +45,14 @@ function createCategoryBlock(data) {
           `
   return element;
 }
-
+//input data: string-title of the task
 function createTaskElement(data) {
   const element =
     `<div class='task-list-element'><i class="icon fa-solid fa-caret-right"></i> <span>${data} </span></div>`;
   return element;
 }
 
-
+//call for rendering data and creating listeners dynamically on the client side
 const loadCategories = function() {
   $.get('/api/tasks/allTasks', function(data, status) {
     console.log('HOME', data, typeof data);
@@ -60,27 +60,16 @@ const loadCategories = function() {
     generateListeners(data.tasks);
   })
 }
-const generateListeners = function(data) {
-  console.log('generate listeners', data);
-  data.forEach(element => {
 
+//input data: assumes that the object has an array of taskTitles, catid, catname
+const generateListeners = function(data) {
+  data.forEach(element => {
     $(`#${element.catid}`).click(function(event) {
       console.log('inside element', element.catid);
       window.location.href = `http://localhost:8080/categories/${element.catid}`;
 
     });
-
-
-    /*   document.getelementbyid(element.catid).addEventListener("click", function(){
-        console.log('inside element',element.catid);
-    }); */
-
   });
 
 }
 
-
-const displayNewTask = function(data) {
-  const element = createTaskElement(data);
-  $('1').prepend(element);
-}
