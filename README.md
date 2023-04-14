@@ -57,6 +57,7 @@ Angela Tabafunda, Catherine Mitchell, Ashwini Hegde
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
+6. Obtain an APPID from `https://products.wolframalpha.com/api/documentation` by creating an account.  Once your account is created, log in, go to My APPs    tab and follow instructions to create the APPID.  Paste this APPID into the `.env` file.    
 7. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
 8. Visit `http://localhost:8080/`
