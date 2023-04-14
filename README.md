@@ -1,5 +1,10 @@
-LHL Node Skeleton
+Sortify
 =========
+## Description
+Sortify is our version of a Smart todo list completed for our LHL midterm. Sortify allows users to create an entry, which will be automatically categorized, if the user didn't specify a category prior submitting the input. Users can dynamically view, edit, and mark entries. The entries will be sorted thorugh a 3-Layer sorting process where if all steps fails, then it will return the item as unsorted.
+ 
+![image](https://user-images.githubusercontent.com/43653051/231930443-fef8497f-357b-4e1d-9080-28cb6a03b6a5.png)
+
 
 ## Project Setup
 
