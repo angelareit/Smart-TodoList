@@ -9,12 +9,14 @@ const { categorizeTask,
 // get the category list and the entries associated with it
 router.get("/:cat_id", (req, res) => {
   taskQueries.getTasksWithCategoryName(req.params.cat_id).then((tasks) => {
-    console.log(tasks);
-    if (tasks.length > 0) {
-      res.render("categories", { tasks });
-    } else {
-      res.redirect(`/home`);
+    categoryQueries.getCategoryList().then((categories) => {
+      if (tasks.length > 0) {
+        res.render("categories", { tasks, categories });
+      } else {
+        res.redirect(`/home`);
+      }
     }
+    )
   });
 });
 
@@ -22,15 +24,21 @@ router.get("/:cat_id", (req, res) => {
 router.post("/updateTask/:task_id", (req, res) => {
   const newTitle = req.body.newTitle;
   const taskId = req.params.task_id;
+  const newCatId = req.body.cat_id;
+
+  console.log(newTitle, taskId, newCatId);
+
+  //categorize if theres a user specified category
+  if (newCatId) {
+    taskQueries.updateTaskTitleAndCatId(taskId, newTitle, newCatId)
+      .then(task => {
+        res.redirect(`/categories/${task.cat_id}`);
+      });
+    return;
+  }
 
   let cat_id = categorizeTask(newTitle);
-  console.log('HERE', cat_id);
-  /* if (!cat_id) {
-    cat_id = categorizeTasksByAPI(newTitle);
-    if (!cat_id){
-      cat_id = 6;
-    }
-  } */
+
   if (!cat_id) {
     //  categorize with the help of API
     categorizeTasksByAPI(newTitle).then(result => {
@@ -56,14 +64,12 @@ router.post("/updateTask/:task_id", (req, res) => {
         });
       }
 
-      //if api result is unsuccessful, assign to unsorted
       if (cat_id === null) {
         cat_id = 6;
         console.log('assigning to 6', cat_id);
       }
       taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
         .then(task => {
-          //task.cat_id = null;
           res.redirect(`/categories/${task.cat_id}`);
         })
     })
@@ -72,7 +78,6 @@ router.post("/updateTask/:task_id", (req, res) => {
     //update db and redirect page to the new category of the last edited item
     taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
       .then(task => {
-        //task.cat_id = null;
         res.redirect(`/categories/${task.cat_id}`);
       })
   }

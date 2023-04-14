@@ -33,15 +33,14 @@ body {
         .task-block {
           display: flex;
           flex-direction: column;
+          width: 100%;
 
           .task-display {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: space-between;
             align-content: center;
-
-
+            flex-direction: row;
+            align-items: center;
             .title {
               display: flex;
               flex-direction: row;
@@ -53,13 +52,14 @@ body {
               flex-direction: row;
               align-self: start;
               align-content: center;
-
+              align-items: center;
 
               .task-update-form {
                 display: flex;
                 flex-direction: row;
                 align-self: start;
                 align-content: center;
+                align-items: center;
 
 
                 input[type=text] {
@@ -82,16 +82,79 @@ body {
 
                 button[type=submit] {
                   border: none;
+
+                  padding: 10px;
+                  border-radius: 5px;
+
                   background-color: transparent;
 
                   .icon {
                     color: theme.$secondaryCol;
                   }
                 }
+                button[type=submit]:hover {
+                  background-color: theme.$secondaryCol;
+
+
+                  .icon {
+                    color: white;
+                  }
+                }
+
+                .dropdown {
+                  display: inline-block;
+
+                  .dropdown-icon{
+                    padding: 10px;
+                    margin: 5px;;
+                    color: theme.$secondaryCol;
+
+                  }
+
+                  .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    padding: 5px 10px;
+                    z-index: 1;
+                  }
+                }
+                .dropdown:hover .dropdown-content {
+                  display: flex;
+                  flex-direction: column;
+                  align-self: start;
+                  align-content: center;
+
+                  label.cat-option {
+                    input[type="radio"] {
+                      display: none;
+                      +.box {
+                        padding: 3px;
+                        span {
+                          color: theme.$secondaryCol;
+                        }
+                      }
+
+                      &:checked {
+                        +.box {
+                          background-color: theme.$secondaryCol;
+                          span {
+                            color: white;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                .dropdown:hover .dropdown-icon
+                {
+                  border-radius: 5px;
+                  color: rgb(255, 255, 255);
+                  background-color: theme.$secondaryCol;
+                }
               }
-
-
-
 
             }
 
@@ -100,13 +163,6 @@ body {
               width: 25px;
               background-color: #ff0505;
             }
-
-            .task-actions {}
-
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
 
             .icon-btn {
               background-color: transparent;
@@ -144,7 +200,10 @@ body {
             align-self: center;
           }
         }
-
+        .update-input-fields{
+          display: flex;
+          flex-direction: column;
+        }
 
 
       }
