@@ -47,37 +47,38 @@
 
                 <div class="task-update-options" style="display: none">
                   <form method="POST" class="task-update-form" action="/categories/updateTask/<%= task.task_id %>">
-                      <input type="text" id="task" name="newTitle" placeholder="<%= task.title %>"
-                      maxlength="200" pattern="^\S.{0,198}\S?$" title="Tittle cannot be blank." /><br />
+                    <input type="text" id="task" name="newTitle" placeholder="<%= task.title %>" required
+                      maxlength="200" pattern="^\S.{0,198}\S?$" title="Tittle cannot be blank." />
 
-                        <div class="dropdown">
-                          <div class = 'dropdown-icon'>
-                            <i class="fa-solid fa-table-list fa-xl"></i>
-                          </div>
+                    <div class="dropdown">
+                      <div class='dropdown-icon'>
+                        <i class="fa-solid fa-table-list fa-xl"></i>
+                      </div>
 
-                          <div class="dropdown-content">
+                      <div class="dropdown-content">
 
-                            <% for (let cat of categories) { %>
-                              <label class="cat-option">
-                                <input type="radio" name="cat_id" value=<%=cat.category_id%> class='cat-option'/>
-                                <div class="box">
-                                  <span>
-                                    <%= cat.category_name%>
-                                  </span>
-                                </div>
-                              </label>
-                              <% } %>
-                          </div>
-                        </div>
+                        <% for (let cat of categories) { %>
+                          <label class="cat-option">
+                            <input type="radio" name="cat_id" value=<%=cat.category_id%> class='cat-option'/>
+                            <div class="box">
+                              <span>
+                                <%= cat.category_name%>
+                              </span>
+                            </div>
+                          </label>
+                          <% } %>
+                      </div>
+                    </div>
 
-                        <button type="submit" class='action 'title="Submit">
-                          <i class="icon fa-regular fa-circle-check fa-xl"></i>
-                          </button>
+                    <button type="submit" class='action ' title="Submit">
+                      <i class="icon fa-regular fa-circle-check fa-xl"></i>
+                    </button>
                   </form>
                 </div>
 
                 <div class="task-actions">
-                  <button title="Edit Here" class="icon-btn" onclick="updateTask(`<%=task.task_id %>`)">
+                  <button title="Edit Here" class="icon-btn"
+                    onclick="updateTask(`<%=task.task_id %>`,`<%=task.title %>`)">
                     <i class="edit action icon fa-solid fa-pen"></i>
                   </button>
                   <button class="icon-btn" title="Mark Complete" onclick="hideTask(`<%=task.task_id %>`)">
@@ -90,7 +91,7 @@
             <% } %>
         </article>
       </section>
-   <!--    <button class="see-completed-btn" onclick="showCompletedTasks(`<%= tasks[0].cat_id %>`)">
+      <!--    <button class="see-completed-btn" onclick="showCompletedTasks(`<%= tasks[0].cat_id %>`)">
         <span>Show completed items</span>
       </button> -->
       <section class="completed-tasks-container">
