@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const taskQueries = require("../db/queries/tasks");
+const categoryQueries = require("../db/queries/categories");
 const { markComplete } = require("../db/queries/helper");
 const { categorizeTask,
   categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
