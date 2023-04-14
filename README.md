@@ -3,7 +3,8 @@ Sortify
 ## Description
 Sortify is our version of a Smart todo list completed for our LHL midterm. Sortify allows users to create an entry, which will be automatically categorized, if the user didn't specify a category prior submitting the input. Users can dynamically view, edit, and mark entries. The entries will be sorted thorugh a 3-Layer sorting process where if all steps fails, then it will return the item as unsorted.
  
-![image]([https://user-images.githubusercontent.com/43653051/231932344-7653d407-3efc-466a-88e2-d3e87f891f5a.png](https://github.com/angelareit/Smart-TodoList/blob/master/docs/pictures/Sortify.gif)
+![](https://github.com/angelareit/Smart-TodoList/blob/master/docs/pictures/Sortify.gif)
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
