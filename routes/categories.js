@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const taskQueries = require("../db/queries/tasks");
-const categoryQueries = require("../db/queries/categories");
 const { markComplete } = require("../db/queries/helper");
 const { categorizeTask,
   categorizeTasksByAPI } = require("../public/scripts/categorizeTask");
@@ -44,7 +43,7 @@ router.post("/updateTask/:task_id", (req, res) => {
     categorizeTasksByAPI(newTitle).then(result => {
       const keywords = {
         1: ["televisionprogram", "movie"],
-        2: ["restaurant"],
+        2: ["restaurant", "species"],
         3: ["book", "novel"],
         4: ["retaillocation", "financial"],
         5: ["expandedfood", "plant"],
@@ -56,8 +55,6 @@ router.post("/updateTask/:task_id", (req, res) => {
           for (const value in keywords) {
             if (keywords[value].some((k) =>
               k.toLowerCase() === datatype.toLowerCase())) {
-              console.log(datatypes)
-              console.log("+++++value", value)
               cat_id = value;
             }
           }
@@ -66,7 +63,6 @@ router.post("/updateTask/:task_id", (req, res) => {
 
       if (cat_id === null) {
         cat_id = 6;
-        console.log('assigning to 6', cat_id);
       }
       taskQueries.updateTaskTitleAndCatId(taskId, newTitle, cat_id)
         .then(task => {
