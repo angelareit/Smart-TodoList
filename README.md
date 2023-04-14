@@ -1,25 +1,49 @@
-Sortify
-=========
-## Description
-Sortify is our version of a Smart todo list completed for our LHL midterm. Sortify allows users to create an entry, which will be automatically categorized, if the user didn't specify a category prior submitting the input. Users can dynamically view, edit, and mark entries. The entries will be sorted thorugh a 3-Layer sorting process where if all steps fails, then it will return the item as unsorted.
- 
+# LHL Sortify, A Smart TO-DO List
+
+## Contributors
+
+Angela Tabafunda, Catherine Mitchell, Ashwini Hegde
+
+## Project Introduction
+
+- A SMART list app that has an auto-categorizing feature to make sure that your entry reaches the correct category automatically.
+- If the entry does not fit into any of the automatic categories, then the app will categorize it into an unsorted list, so that you can still view your entry.
+- Users will be able to change a category of an item in case it was mis-categorized or could not be categorized at all.
+
 ![](https://github.com/angelareit/Smart-TodoList/blob/master/docs/pictures/Sortify.gif)
 
+## Main Features
+
+- User Input Handling
+  - Specify the title of the entry
+  - Optional: specify the category
+  - Input Validation
+- 3-Layer Automatic sorting for 5 different categories
+  - Watch, Eat, Read, Buy, Cook
+- View all categories with pending entries
+- View all entries in a category
+  - Allow users to mark entry as completed
+  - Allow users to edit an entry title and re-sort it
+  
+
+### Flowchart
+
+![Flowchart](https://github.com/angelareit/Smart-TodoList/blob/master/public/doc/Images/flowChart.png)
+
+### Project results
+
+![Login](https://github.com/angelareit/Smart-TodoList/blob/master/public/doc/Images/login.png)
+
+![HomePage1](https://github.com/angelareit/Smart-TodoList/blob/master/public/doc/Images/homePage1.png)
+
+![HomePage2](https://github.com/angelareit/Smart-TodoList/blob/master/public/doc/Images/homepage2.png)
+
+![Categories1](https://github.com/angelareit/Smart-TodoList/blob/master/public/doc/Images/categories1.png)
+
 ### Sorting
-- for more accurate automatic sorting, use keywords such as: Buy, Eat, Watch, Read, Cook
+- For a more accurate automatic sorting, use keywords such as: Buy, Eat, Watch, Read, Cook
 - If no context was given, WolframAPI will handle the sorting which might not be accurate
 - No automatic sorting happens when a user manually specifies a category
-
-
-## Project Setup
-
-The following steps are only for _one_ of the group members to perform.
-
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
 
 
 ## Getting Started
